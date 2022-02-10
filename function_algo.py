@@ -26,5 +26,5 @@ actions_tried_by_best_profit = sorted(
 for action in actions_tried_by_best_profit:
     print(
         f"Action N°{action.number_action:<5}{'-':<5}Nb action : {action.number_action:<5}{'=>':<5}\
-    Profit to 2 years : {action.profit_to_years:.2f}"
+    Profit to 2 years : {action.profit_to_years:.2f}€"
     )
