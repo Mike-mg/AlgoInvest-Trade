@@ -58,7 +58,6 @@ while True:
         break
 
 
-
 for action_id in all_actions:
     print(
         f"N°: {action_id.number_action} - Price : {action_id.price_action} - Years % : {action_id.profit_action}% - Profit total :{action_id.profit_to_years}"
