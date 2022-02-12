@@ -12,7 +12,7 @@ class Action:
         number_action: str,
         price_action: int,
         profit_action: int,
-        profit_to_years: int = 0,
+        profit_to_years: int = 0
     ):
         self.number_action = number_action
         self.price_action = price_action
