@@ -44,7 +44,7 @@ all_actions = shares_sorted_by_price()
 
 for action_id in all_actions:
     print(
-        f"N°: {action_id.number_action} - Price : {action_id.price_action} - Years % : {action_id.profit_action}% - Profit total :{action_id.profit_to_years}"
+        f"N°: {action_id.number_action} - Price : {action_id.price_action}€ - Years % : {action_id.profit_action}% - Profit total : {action_id.profit_to_years}€ - Profit : {action_id.profit_to_years - action_id.price_action:.2f}€"
     )
 
 shares_preference = []
