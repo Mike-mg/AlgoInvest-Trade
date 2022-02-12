@@ -20,12 +20,22 @@ def shares_sorted_by_price():
         data = json.load(f)
 
         for share in data["actions"]:
-            shares_objects.append(models.Action(share["number_action"], share["price_action"], share["profit_action"]))
+            shares_objects.append(
+                models.Action(
+                    share["number_action"],
+                    share["price_action"],
+                    share["profit_action"],
+                )
+            )
 
-    sorted_shares_by_price = sorted(shares_objects, key=attrgetter("price_action"), reverse=True)
+    sorted_shares_by_price = sorted(
+        shares_objects, key=attrgetter("price_action"), reverse=True
+    )
 
     for id_action in sorted_shares_by_price:
-        id_action.profit_to_years = id_action.price_action + (id_action.price_action * id_action.profit_action / 100)
+        id_action.profit_to_years = id_action.price_action + (
+            id_action.price_action * id_action.profit_action / 100
+        )
 
     return sorted_shares_by_price
 
