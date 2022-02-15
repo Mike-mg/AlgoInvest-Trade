@@ -10,9 +10,9 @@ class Action:
     def __init__(
         self,
         number_action: str,
-        price_action: int,
-        profit_action: int,
-        profit_to_years: int = 0
+        price_action: float,
+        profit_action: float,
+        profit_to_years: float = 0,
     ):
         self.number_action = number_action
         self.price_action = price_action
