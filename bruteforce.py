@@ -5,7 +5,6 @@ import os
 import json
 import time
 import models
-from models import Profit
 from itertools import combinations
 
 
@@ -41,6 +40,54 @@ def max_combinations(actions_list: list[models.Action]):
     return all_combinations
 
 
+def details_invest_profit_by_combination(all_combination: list):
+    """
+    Comparison between the amount invested and profits
+    """
+
+    for i in all_combination:
+
+        for comb in i:
+
+            total_invest = 0
+            total_profit = 0
+
+            for share_id in comb:
+                share_id.profit_to_years = share_id.price_action + (share_id.price_action * share_id.profit_action / 100)
+                total_profit += share_id.profit_to_years
+                total_invest += share_id.price_action
+
+            # print(f"\n\n{'=' * 50}")
+            # print(comb)
+            # print(f"invest : {total_invest}")
+            # print(f"Profit : {total_profit}")
+            # print(f"{'=' * 50}\n\n")
+        print(len(i))
+
+
+
+    # total_profit = 0
+    # total_invest = 0
+    #
+    # print(f"{'=' * 50}")
+    #
+    # for all_shares in all_combination[0]:
+    #     print(len(all_shares))
+    #     for i in all_shares:
+    #         print(f"{'=' * 50}")
+    #         # print(i)
+    #         print(f"{'=' * 50}")
+    #
+    #     for share_id in all_shares:
+    #         share_id.profit_to_years = share_id.price_action + (share_id.price_action * share_id.profit_action / 100)
+    #         total_profit += share_id.profit_to_years
+    #         total_invest += share_id.price_action
+    #         # print(share_id)
+    #
+    # print(f"For invest of {total_invest:.2f}€, the profit is : {total_profit:.2f}€")
+    # print(f"{'=' * 50}")
+
+
 def best_combination(all_combinations):
     """
     Return the best combination
@@ -56,24 +103,8 @@ def main():
     Execute the program
     """
     all_combinations = max_combinations(shares_objects)
+    details_invest_profit_by_combination(all_combinations)
 
-# list_of_shares_detail = []
-# for index, value in enumerate(all_combinations):
-#     total_profit = 0
-#     total_invest = 0
-#
-#     # print(f"{'=' * 50}\n\n")
-#     # print(f"{index} : {value}")
-#     for u in value:
-#         u.profit_to_years = u.price_action + (u.price_action * u.profit_action / 100)
-#         total_profit += u.profit_to_years
-#         total_invest += u.price_action
-#
-#     list_of_shares_detail.append((value, total_invest, total_profit))
-#     # print(f"\ntotal profit : {total_profit}")
-#     # print(f"total invest : {total_invest}")
-#     #
-#     # print(f"\n\n{'=' * 50}")
 
 if __name__ == '__main__':
     main()
