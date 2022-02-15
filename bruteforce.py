@@ -7,10 +7,10 @@ import time
 import models
 from itertools import combinations
 
-
 os.system('clear')
 
 shares_objects = []
+profit_objects_by_combination = []
 
 with open('actions.json') as f:
     data = json.load(f)
@@ -45,47 +45,32 @@ def details_invest_profit_by_combination(all_combination: list):
     Comparison between the amount invested and profits
     """
 
-    for i in all_combination:
 
-        for comb in i:
+
+    for select_combination in all_combination:
+
+        for combination in select_combination:
 
             total_invest = 0
             total_profit = 0
+            total_share_by_combination = []
 
-            for share_id in comb:
+            for share_id in combination:
                 share_id.profit_to_years = share_id.price_action + (share_id.price_action * share_id.profit_action / 100)
                 total_profit += share_id.profit_to_years
                 total_invest += share_id.price_action
+                total_share_by_combination.append(share_id)
 
-            # print(f"\n\n{'=' * 50}")
-            # print(comb)
-            # print(f"invest : {total_invest}")
-            # print(f"Profit : {total_profit}")
-            # print(f"{'=' * 50}\n\n")
-        print(len(i))
+            profit_objects_by_combination.append((total_share_by_combination, total_invest, total_profit))
 
+    for index, value in enumerate(profit_objects_by_combination):
+        print(f"{index} : {value[1]} - {value[2]}")
 
-
-    # total_profit = 0
-    # total_invest = 0
-    #
-    # print(f"{'=' * 50}")
-    #
-    # for all_shares in all_combination[0]:
-    #     print(len(all_shares))
-    #     for i in all_shares:
-    #         print(f"{'=' * 50}")
-    #         # print(i)
-    #         print(f"{'=' * 50}")
-    #
-    #     for share_id in all_shares:
-    #         share_id.profit_to_years = share_id.price_action + (share_id.price_action * share_id.profit_action / 100)
-    #         total_profit += share_id.profit_to_years
-    #         total_invest += share_id.price_action
-    #         # print(share_id)
-    #
-    # print(f"For invest of {total_invest:.2f}€, the profit is : {total_profit:.2f}€")
-    # print(f"{'=' * 50}")
+        # print(f"\n\n{'=' * 50}")
+        # print(comb)
+        # print(f"invest : {total_invest}")
+        # print(f"Profit : {total_profit}")
+        # print(f"{'=' * 50}\n\n")
 
 
 def best_combination(all_combinations):
@@ -102,8 +87,13 @@ def main():
     """
     Execute the program
     """
+
+    time_1 = time.time()
     all_combinations = max_combinations(shares_objects)
     details_invest_profit_by_combination(all_combinations)
+    time_2 = time.time()
+    time_t = time_2 - time_1
+    print(f"Time to complete the task : {time_t} sec")
 
 
 if __name__ == '__main__':

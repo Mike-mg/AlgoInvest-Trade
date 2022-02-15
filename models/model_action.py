@@ -4,7 +4,7 @@
 
 class Action:
     """
-    Class that creates the action object
+    Class that creates an action object
     """
 
     def __init__(
