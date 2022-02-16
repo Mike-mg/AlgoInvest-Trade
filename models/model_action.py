@@ -9,12 +9,12 @@ class Action:
 
     def __init__(
         self,
-        number_action: str,
-        price_action: float,
-        profit_action: float,
+        name: str,
+        price: float,
+        profit: float,
         profit_to_years: float = 0,
     ):
-        self.number_action = number_action
-        self.price_action = price_action
-        self.profit_action = profit_action
+        self.name = name
+        self.price = price
+        self.profit = profit
         self.profit_to_years = profit_to_years

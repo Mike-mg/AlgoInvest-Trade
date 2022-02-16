@@ -1,13 +1,18 @@
 #! /usr/bin/env python3
 # coding:utf-8
 
+"""
+Return the combinations of shares with the best profit
+"""
+
 import operator
 import os
 import json
+# import csv
 import time
-import models
-from models import ProfitByCombination
 from itertools import combinations
+import models
+from models.model_profit import ProfitByCombination
 
 os.system("clear")
 
@@ -29,12 +34,29 @@ class TopProfitByShare:
 
         shares_objects = []
 
-        with open("actions.json") as f:
-            data = json.load(f)
+        # csv_file_actions = csv.DictReader(open("dataset1_Python+P7.csv"))
+        # for share in csv_file_actions:
+        #     share["price"] = float(share["price"])
+        #     share["profit"] = float(share["price"])
+        #     shares_objects.append(
+        #                 models.Action(
+        #                     share["name"],
+        #                     share["price"],
+        #                     share["profit"]
+        #                 )
+        #             )
+        #
+        # for y, i in enumerate(shares_objects):
+        #     print(f"{y+1} :: Name : {i.name} - Price : {i.price} - Profit : {i.profit}")
+
+        with open("actions.json", "r", encoding="utf-8") as file:
+            data = json.load(file)
             for share in data["actions"]:
                 shares_objects.append(
                     models.Action(
-                        share["number_action"], share["price_action"], share["profit_action"]
+                        share["name"],
+                        share["price"],
+                        share["profit"],
                     )
                 )
 
@@ -63,11 +85,11 @@ class TopProfitByShare:
                 total_share_by_combination = []
 
                 for share_id in combination:
-                    share_id.profit_to_years = share_id.price_action + (
-                        share_id.price_action * share_id.profit_action / 100
+                    share_id.profit_to_years = share_id.price + (
+                        share_id.price * share_id.profit / 100
                     )
                     total_profit += share_id.profit_to_years
-                    total_invest += share_id.price_action
+                    total_invest += share_id.price
                     total_share_by_combination.append(share_id)
 
                 self.profit_objects_by_combination.append(
@@ -94,7 +116,9 @@ class TopProfitByShare:
             if by_combination.total_invest == 500:
                 invest_to_500.append(by_combination)
 
-        profit_sorted = sorted(invest_to_500, key=operator.attrgetter("total_profit"), reverse=True)
+        profit_sorted = sorted(
+            invest_to_500, key=operator.attrgetter("total_profit"), reverse=True
+        )
 
         best_profit = profit_sorted[0]
         print(
