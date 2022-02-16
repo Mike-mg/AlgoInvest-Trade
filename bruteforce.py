@@ -102,7 +102,7 @@ class TopShare:
         #
         best = a[0]
         print(
-            f"{'=' * 50}\n\n"
+            f"\n\n{'=' * 50}\n\n"
             f"- Total invest : {best.total_invest}\n"
             f"- Total profit : {best.total_profit}\n"
             f"- Shares : {best.total_share_by_combination}\n"
@@ -115,25 +115,20 @@ def main():
     Execute the program
     """
 
-    # time_1 = time.time()
+    time_1 = time.time()
 
     top_share = TopShare()
-    print("objet creer share")
+    print("> Objet TopShare create ... Finish")
     top_share.max_combinations()
-    print("max combination")
+    print("> Task of the create of max number of combination ... Finish")
     top_share.create_object_profit_by_combination()
-    print("objet creer profit")
+    print("> Creations of objects profit by combination ... Finish")
+    print("> Return of the best investment ... Finish")
     top_share.best_combination()
-    print("return best profit")
 
-    # profit_objects_by_combination = create_object_profit_by_combination(
-    #     all_combinations
-    # )
-    # best_combination(profit_objects_by_combination)
-    #
-    # time_2 = time.time()
-    # time_t = time_2 - time_1
-    # print(f"Time to complete the task : {time_t} sec\n\n")
+    time_2 = time.time()
+    time_t = time_2 - time_1
+    print(f"\nTime to complete the task : {time_t} sec\n\n")
 
 
 if __name__ == "__main__":
