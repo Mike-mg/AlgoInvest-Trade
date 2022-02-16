@@ -18,3 +18,6 @@ class Action:
         self.price = price
         self.profit = profit
         self.profit_to_years = profit_to_years
+
+    def __repr__(self):
+        return self.name

@@ -12,7 +12,6 @@ import json
 import time
 from itertools import combinations
 import models
-from models.model_profit import ProfitByCombination
 
 os.system("clear")
 
@@ -23,46 +22,43 @@ class TopProfitByShare:
     """
 
     def __init__(self):
-        self.shares_objects = self.open_file()
+        self.shares_objects = []
         self.all_combinations = []
         self.profit_objects_by_combination = []
+        self.open_file()
 
     def open_file(self):
         """
         Read the shares file
         """
 
-        shares_objects = []
-
         # csv_file_actions = csv.DictReader(open("dataset1_Python+P7.csv"))
         # for share in csv_file_actions:
         #     share["price"] = float(share["price"])
         #     share["profit"] = float(share["price"])
-        #     shares_objects.append(
+        #     self.shares_objects.append(
         #                 models.Action(
         #                     share["name"],
         #                     share["price"],
         #                     share["profit"]
         #                 )
         #             )
-        #
-        # for y, i in enumerate(shares_objects):
-        #     print(f"{y+1} :: Name : {i.name} - Price : {i.price} - Profit : {i.profit}")
+
+        for y, i in enumerate(self.shares_objects):
+            print(f"{y+1} :: Name : {i.name} - Price : {i.price} - Profit : {i.profit}")
 
         with open("actions.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             for share in data["actions"]:
-                shares_objects.append(
+                self.shares_objects.append(
                     models.Action(
-                        share["name"],
+                        str(share["name"]),
                         share["price"],
                         share["profit"],
                     )
                 )
 
-        return shares_objects
-
-    def max_combinations(self):
+    def max_combinations(self) -> None:
         """
         Returns all possible combinations
         """
@@ -70,8 +66,9 @@ class TopProfitByShare:
         for combination_r in range(1, len(self.shares_objects)):
             combination = combinations(self.shares_objects, combination_r)
             self.all_combinations.append(list(combination))
+        print(sum(map(len, self.all_combinations)))
 
-    def create_object_profit_by_combination(self):
+    def create_object_profit_by_combination(self) -> None:
         """
         Create and return list object by profit of all combinations
         """
@@ -93,7 +90,7 @@ class TopProfitByShare:
                     total_share_by_combination.append(share_id)
 
                 self.profit_objects_by_combination.append(
-                    ProfitByCombination(
+                    models.ProfitByCombination(
                         total_share_by_combination, total_invest, total_profit
                     )
                 )
@@ -105,15 +102,9 @@ class TopProfitByShare:
 
         invest_to_500 = []
 
-        sort_by_nb_combinations = sorted(
-            self.profit_objects_by_combination,
-            key=operator.attrgetter("total_invest", "total_profit"),
-            reverse=True,
-        )
+        for by_combination in self.profit_objects_by_combination:
 
-        for by_combination in sort_by_nb_combinations:
-
-            if by_combination.total_invest == 500:
+            if by_combination.total_invest <= 500:
                 invest_to_500.append(by_combination)
 
         profit_sorted = sorted(
