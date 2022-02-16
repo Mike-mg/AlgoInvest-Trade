@@ -12,7 +12,7 @@ from itertools import combinations
 os.system("clear")
 
 
-class TopShare:
+class TopProfitByShare:
     """
     Return the share with the best profit
     """
@@ -49,8 +49,6 @@ class TopShare:
             combination = combinations(self.shares_objects, combination_r)
             self.all_combinations.append(list(combination))
 
-        # return self.all_combinations
-
     def create_object_profit_by_combination(self):
         """
         Create and return list object by profit of all combinations
@@ -78,8 +76,6 @@ class TopShare:
                     )
                 )
 
-        # return self.profit_objects_by_combination
-
     def best_combination(self) -> None:
         """
         Return the best combination
@@ -98,14 +94,14 @@ class TopShare:
             if by_combination.total_invest == 500:
                 invest_to_500.append(by_combination)
 
-        a = sorted(invest_to_500, key=operator.attrgetter("total_profit"), reverse=True)
-        #
-        best = a[0]
+        profit_sorted = sorted(invest_to_500, key=operator.attrgetter("total_profit"), reverse=True)
+
+        best_profit = profit_sorted[0]
         print(
             f"\n\n{'=' * 50}\n\n"
-            f"- Total invest : {best.total_invest}\n"
-            f"- Total profit : {best.total_profit}\n"
-            f"- Shares : {best.total_share_by_combination}\n"
+            f"- Total invest : {best_profit.total_invest}\n"
+            f"- Total profit : {best_profit.total_profit}\n"
+            f"- Shares : {best_profit.total_share_by_combination}\n"
             f"\n\n{'=' * 50}\n"
         )
 
@@ -117,7 +113,7 @@ def main():
 
     time_1 = time.time()
 
-    top_share = TopShare()
+    top_share = TopProfitByShare()
     print("> Objet TopShare create ... Finish")
     top_share.max_combinations()
     print("> Task of the create of max number of combination ... Finish")
