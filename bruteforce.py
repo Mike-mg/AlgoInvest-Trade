@@ -27,7 +27,7 @@ class TopProfitByShare:
         self.profit_objects_by_combination = []
         self.open_file()
 
-    def open_file(self):
+    def open_file(self) -> None:
         """
         Read the shares file
         """
@@ -82,9 +82,7 @@ class TopProfitByShare:
                 total_share_by_combination = []
 
                 for share_id in combination:
-                    share_id.profit_to_years = share_id.price + (
-                        share_id.price * share_id.profit / 100
-                    )
+                    share_id.profit_to_years = share_id.price * share_id.profit / 100
                     total_profit += share_id.profit_to_years
                     total_invest += share_id.price
                     total_share_by_combination.append(share_id)
