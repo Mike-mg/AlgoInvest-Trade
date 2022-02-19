@@ -8,8 +8,6 @@ Return the combinations of shares with the best profit
 import operator
 import os
 import json
-# import csv
-import time
 from itertools import combinations
 import models
 
@@ -31,18 +29,6 @@ class TopProfitByShare:
         """
         Read the shares file
         """
-
-        # csv_file_actions = csv.DictReader(open("dataset1_Python+P7.csv"))
-        # for share in csv_file_actions:
-        #     share["price"] = float(share["price"])
-        #     share["profit"] = float(share["price"])
-        #     self.shares_objects.append(
-        #                 models.Action(
-        #                     share["name"],
-        #                     share["price"],
-        #                     share["profit"]
-        #                 )
-        #             )
 
         for y, i in enumerate(self.shares_objects):
             print(f"{y+1} :: Name : {i.name} - Price : {i.price} - Profit : {i.profit}")
@@ -124,8 +110,6 @@ def main():
     Execute the program
     """
 
-    time_1 = time.time()
-
     top_share = TopProfitByShare()
     print("> Objet TopShare create ... Finish")
     top_share.max_combinations()
@@ -134,10 +118,6 @@ def main():
     print("> Creations of objects profit by combination ... Finish")
     print("> Return of the best investment ... Finish")
     top_share.best_combination()
-
-    time_2 = time.time()
-    time_t = time_2 - time_1
-    print(f"\nTime to complete the task : {time_t} sec\n\n")
 
 
 if __name__ == "__main__":
