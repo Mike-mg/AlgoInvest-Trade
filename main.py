@@ -13,6 +13,8 @@ def main():
     Entry the program
     """
 
+    print(algorithms.list_of_tuple_shares())
+
     # Mon force brute =======================
 
     top_share = algorithms.TopProfitByShare()
@@ -29,7 +31,7 @@ def main():
 
     # algomius naif =======================
 
-    all_shares = algorithms.list_of_dict_shares()
+    all_shares = algorithms.list_of_tuple_shares()
 
     print(f"Algo naive algomius\n{'-' * 25}")
     print(algorithms.algorithm_naive(500, all_shares))
@@ -38,7 +40,7 @@ def main():
 
     # algomius force brute =======================
 
-    all_shares = algorithms.list_of_dict_shares()
+    all_shares = algorithms.list_of_tuple_shares()
 
     print(f"Algo brute force algomius\n{'-' * 25}")
     print(algorithms.algorithm_brute_force(500, all_shares))

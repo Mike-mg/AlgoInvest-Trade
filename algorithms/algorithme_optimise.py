@@ -7,9 +7,9 @@ Solutions algorithms
 import json
 
 
-def list_of_dict_shares():
+def list_of_tuple_shares():
     """
-    Returns list od dict od shares sort by % profit
+    Returns list of tuple of shares sort by % profit
     """
 
     shares_objects = []
