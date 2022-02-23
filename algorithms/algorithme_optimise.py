@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # coding:utf-8
 """
-Docstring
+Solutions algorithms
 """
 
 import json
@@ -25,9 +25,9 @@ def list_of_dict_shares():
     return shares_objects
 
 
-def algorithm_naif(max_invest, list_shares):
+def algorithm_naive(max_invest, list_shares):
     """
-    Description
+    Return the best invest with a naif
     """
 
     share_select = []
@@ -46,23 +46,24 @@ def algorithm_naif(max_invest, list_shares):
     )
 
 
-def algorithm_brute_force(invest_max, list_shares, shares_select: list =[]):
+def algorithm_brute_force(invest_max, list_shares, shares_select: list = []):
     """
-    Docstring
+    Return the best invest with a brute force
     """
 
     if list_shares:
-        liste_1, liste_2 = algorithm_brute_force(
+
+        val1, lstVal1 = algorithm_brute_force(
             invest_max, list_shares[1:], shares_select
         )
-        share_0 = list_shares[0]
-        if share_0[1] <= invest_max:
-            liste_3, liste_4 = algorithm_brute_force(
-                invest_max - share_0[1], list_shares[1:], shares_select + [share_0]
+        val = list_shares[0]
+        if val[1] <= invest_max:
+            val2, lstVal2 = algorithm_brute_force(
+                invest_max - val[1], list_shares[1:], shares_select + [val]
             )
-            if liste_1 < liste_3:
-                return liste_3, liste_4
+            if val1 < val2:
+                return val2, lstVal2
 
-        return liste_1, liste_2
+        return val1, lstVal1
     else:
         return sum([i[2] for i in shares_select]), shares_select

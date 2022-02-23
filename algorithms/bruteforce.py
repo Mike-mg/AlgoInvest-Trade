@@ -11,7 +11,7 @@ import json
 from itertools import combinations
 import models
 
-# os.system("clear")
+os.system("clear")
 
 
 class TopProfitByShare:
@@ -33,7 +33,7 @@ class TopProfitByShare:
         for y, i in enumerate(self.shares_objects):
             print(f"{y+1} :: Name : {i.name} - Price : {i.price} - Profit : {i.profit}")
 
-        with open("actions.json", "r", encoding="utf-8") as file:
+        with open("data_base/actions.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             for share in data["actions"]:
                 self.shares_objects.append(
@@ -103,22 +103,3 @@ class TopProfitByShare:
             f"- Shares : {best_profit.total_share_by_combination}\n"
             f"\n\n{'=' * 50}\n"
         )
-
-
-def main():
-    """
-    Execute the program
-    """
-
-    top_share = TopProfitByShare()
-    print("> Objet TopShare create ... Finish")
-    top_share.max_combinations()
-    print("> Task of the create of max number of combination ... Finish")
-    top_share.create_object_profit_by_combination()
-    print("> Creations of objects profit by combination ... Finish")
-    print("> Return of the best investment ... Finish")
-    top_share.best_combination()
-
-
-if __name__ == "__main__":
-    main()
