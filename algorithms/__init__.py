@@ -1,6 +1,5 @@
-from algorithms.algorithme_optimise import (
-    list_of_tuple_shares,
+from algorithms.algorithms import (
     algorithm_naive,
-    algorithm_brute_force,
+    algorithm_dynamic,
 )
 from algorithms.bruteforce import TopProfitByShare

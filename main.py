@@ -1,11 +1,13 @@
 #! /usr/bin/env python3
 # coding:utf-8
+
 """
-Docstring
+Entry the program
 """
 
 
 import algorithms
+import data_base
 
 
 def main():
@@ -13,40 +15,29 @@ def main():
     Entry the program
     """
 
-    print(algorithms.list_of_tuple_shares())
+    # algo naive =======================
 
-    # Mon force brute =======================
+    list_shares = data_base.open_file.open_file_csv("Algorithm Naive")
+    print(algorithms.algorithm_naive(list_shares,500))
+
+    # Brute force =======================
 
     top_share = algorithms.TopProfitByShare()
 
-    print("> Objet TopShare create ... Finish")
+    print("> Objet TopShare create")
     top_share.max_combinations()
-    print("> Task of the create of max number of combination ... Finish")
+    print("> Task of the create of max number of combination")
     top_share.create_object_profit_by_combination()
-    print("> Creations of objects profit by combination ... Finish")
-    print("> Return of the best investment ... Finish")
+    print("> Creations of objects profit by combination")
+    print("> Return of the best investment")
     top_share.best_combination()
 
-    print(f"\n{'#' * 25}\n")
+    # algomius dynamic =======================
 
-    # algomius naif =======================
+    # print(f"Algo dynamic algomius\n{'-' * 25}")
+    # print(algorithms.algorithm_dynamic(list_shares, 500))
 
-    all_shares = algorithms.list_of_tuple_shares()
-
-    print(f"Algo naive algomius\n{'-' * 25}")
-    print(algorithms.algorithm_naive(500, all_shares))
-
-    print(f"\n{'#' * 25}\n")
-
-    # algomius force brute =======================
-
-    all_shares = algorithms.list_of_tuple_shares()
-
-    print(f"Algo brute force algomius\n{'-' * 25}")
-    print(algorithms.algorithm_brute_force(500, all_shares))
-
-    print(f"\n{'#' * 25}\n")
-
+    # print(f"\n\n{'#' * 25}\n\n")
 
 if __name__ == "__main__":
     main()

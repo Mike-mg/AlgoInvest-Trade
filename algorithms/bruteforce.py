@@ -7,9 +7,9 @@ Return the combinations of shares with the best profit
 
 import operator
 import os
-import json
 from itertools import combinations
 import models
+import data_base
 
 os.system("clear")
 
@@ -23,26 +23,23 @@ class TopProfitByShare:
         self.shares_objects = []
         self.all_combinations = []
         self.profit_objects_by_combination = []
-        self.open_file()
+        self.open_file_csv = data_base.open_file.open_file_csv("Algo Brute Force")
+        self.get_shares()
 
-    def open_file(self) -> None:
+    def get_shares(self) -> None:
         """
-        Read the shares file
+        Get shares
         """
+    
+        for share in self.open_file_csv:
 
-        for y, i in enumerate(self.shares_objects):
-            print(f"{y+1} :: Name : {i.name} - Price : {i.price} - Profit : {i.profit}")
-
-        with open("data_base/actions.json", "r", encoding="utf-8") as file:
-            data = json.load(file)
-            for share in data["actions"]:
-                self.shares_objects.append(
-                    models.Action(
-                        str(share["name"]),
-                        share["price"],
-                        share["profit"],
-                    )
+            self.shares_objects.append(
+                models.Action(
+                    str(share[0]),
+                    float(share[1]),
+                    float(share[2]),
                 )
+            )
 
     def max_combinations(self) -> None:
         """
@@ -52,7 +49,6 @@ class TopProfitByShare:
         for combination_r in range(1, len(self.shares_objects)):
             combination = combinations(self.shares_objects, combination_r)
             self.all_combinations.append(list(combination))
-        print(sum(map(len, self.all_combinations)))
 
     def create_object_profit_by_combination(self) -> None:
         """
@@ -97,9 +93,9 @@ class TopProfitByShare:
 
         best_profit = profit_sorted[0]
         print(
-            f"\n\n{'=' * 50}\n\n"
+            f"\n\n{'°' * 50}\n\n"
             f"- Total invest : {best_profit.total_invest}\n"
             f"- Total profit : {best_profit.total_profit}\n"
             f"- Shares : {best_profit.total_share_by_combination}\n"
-            f"\n\n{'=' * 50}\n"
+            f"\n\n{'#' * 50}\n"
         )
