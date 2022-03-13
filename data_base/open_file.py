@@ -15,22 +15,22 @@ def open_file_csv(type_algo) -> list:
     """
     print(f"\n\n{'#' * 50}\n\n")
 
-    files = []
+    list_files = []
     folders = os.listdir("data_base")
     list_shares = []
 
     for folder in folders:
         if ".csv" in folder:
-            files.append(folder)
+            list_files.append(folder)
 
     print(f"Selected folders for get shares ({type_algo}):\n{'-' * 50}\n")
 
-    for index, path in enumerate(files):
+    for index,  path in enumerate(list_files):
         print(f"[ {index} ] {path}")
 
     select_path = int(input("\nSelected folders for iterate the combinations : "))
 
-    folder_selected = f"data_base/{folders[select_path]}"
+    folder_selected = f"data_base/{list_files[select_path]}"
 
     with open(folder_selected, "r", encoding="utf-8") as file:
         data = csv.reader(file)
@@ -45,3 +45,6 @@ def open_file_csv(type_algo) -> list:
     print(f"\n\n{'°' * 50}\n\n")
 
     return list_shares
+
+if __name__ == "__main__":
+    open_file_csv()

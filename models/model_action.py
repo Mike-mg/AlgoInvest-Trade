@@ -12,11 +12,11 @@ class Action:
     """
 
     def __init__(
-        self,
-        name: str,
-        price: float,
-        profit: float,
-        profit_to_years: float = 0,
+        self, 
+        name: str, 
+        price: float, 
+        profit: float, 
+        profit_to_years: float = 0, 
     ):
         self.name = name
         self.price = price

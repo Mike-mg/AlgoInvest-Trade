@@ -1,5 +1,2 @@
-from algorithms.algorithms import (
-    algorithm_naive,
-    algorithm_dynamic,
-)
+from algorithms.algorithms import algorithm_naive
 from algorithms.bruteforce import TopProfitByShare

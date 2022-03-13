@@ -1,0 +1,18 @@
+DEBUT
+
+    // Solution algorithme naive
+    CREATION fonction algotithme naif(PARAM <- liste actions,  PARAM1 <- FLOTTANT)
+        
+        DEFINIR var1 <- actions selectionnees
+        DEFINIR var2 <- 0
+
+        POUR var DANS PARAM trier SUR INDEX 2 resultat INVERSER
+            SI var INDEX 1 + var2 <= PARAM1
+                AJOUTER var DANS var1
+                INCREMENTER var INDEX 1 a var2
+
+        RENVOI SOMME investi de INDEX 1 de toutes les actions de var1, 
+                SOMME profit de INDEX 1 toutes les actions de var1, 
+                noms INDEX 0 des actions de var1
+
+FIN

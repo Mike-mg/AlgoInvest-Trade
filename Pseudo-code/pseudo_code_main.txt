@@ -1,0 +1,13 @@
+DEBUT
+
+    // algo naive
+    DEFINIR var <- FONCTION <- ouvrir un fichier dans data_base et renvoi une liste d'actions
+    EXECUTER AFFICHER var
+
+    // algo brute force
+    DEFINIR var2 <- Objet algorithms TopProfitByShare()
+    EXECUTER METHODE max_combinations DE var2
+    EXECUTER METHODE create_object_profit_by_combination DE var2
+    EXECUTER METHODE best_combination DE var2
+
+FIN

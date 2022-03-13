@@ -1,0 +1,35 @@
+DEBUT
+
+    // Fonction pour ouvrir un fichier et renvoyer une liste
+    CREATION fonction ouvrir un fichier(PARAM <- STRING)
+        
+        DEFINIR var1 <- liste des fichiers
+        DEFINIR var2 <- recuperer les fichiers dans data_base
+        DEFINIR var3 <- liste des actions
+
+        POUR var DANS var2
+            SI fichier .csv DANS var
+                AJOUTER var DANS var1
+
+        AFFICHER PARAM
+
+        POUR val val1 DANS ENUMERATION var1
+            AFFICHER val val1
+
+        LIRE choix du fichier
+        
+        DEFINIR var4 <- fichier selectionne
+
+        OUVRIR le fichier   
+            DEFINIR data <- LIRE le fichier
+
+            LIGNE SUIVANTE data
+
+            POUR val DANS data
+                val INDEX 1 <- FLOTTANT val INDEX 1 
+                val INDEX 2 <- FLOTTANT val INDEX 2
+                AJOUTER (val INDEX 1,  val INDEX 2,  val INDEX 2) DANS var3 
+
+            RENVOI var3
+
+FIN

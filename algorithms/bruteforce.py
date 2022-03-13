@@ -16,11 +16,11 @@ class TopProfitByShare:
     Return the share with the best profit
     """
 
-    def __init__(self):
+    def __init__(self,list_shares: list):
         self.shares_objects = []
         self.all_combinations = []
         self.profit_objects_by_combination = []
-        self.open_file_csv = data_base.open_file.open_file_csv("Algorithm Brute Force")
+        self.open_file_csv = list_shares
         self.get_shares()
 
     def get_shares(self) -> None:
