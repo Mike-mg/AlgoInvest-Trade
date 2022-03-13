@@ -6,12 +6,9 @@ Return the combinations of shares with the best profit
 """
 
 import operator
-import os
 from itertools import combinations
 import models
 import data_base
-
-os.system("clear")
 
 
 class TopProfitByShare:
@@ -23,14 +20,14 @@ class TopProfitByShare:
         self.shares_objects = []
         self.all_combinations = []
         self.profit_objects_by_combination = []
-        self.open_file_csv = data_base.open_file.open_file_csv("Algo Brute Force")
+        self.open_file_csv = data_base.open_file.open_file_csv("Algorithm Brute Force")
         self.get_shares()
 
     def get_shares(self) -> None:
         """
         Get shares
         """
-    
+
         for share in self.open_file_csv:
 
             self.shares_objects.append(

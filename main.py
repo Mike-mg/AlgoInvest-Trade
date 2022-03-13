@@ -18,7 +18,9 @@ def main():
     # algo naive =======================
 
     list_shares = data_base.open_file.open_file_csv("Algorithm Naive")
-    print(algorithms.algorithm_naive(list_shares,500))
+    print(algorithms.algorithm_naive(list_shares, 500))
+
+    print(f"\n\n{'#' * 50}\n\n")
 
     # Brute force =======================
 
@@ -34,10 +36,9 @@ def main():
 
     # algomius dynamic =======================
 
-    # print(f"Algo dynamic algomius\n{'-' * 25}")
-    # print(algorithms.algorithm_dynamic(list_shares, 500))
+    # list_shares = data_base.open_file.open_file_csv("Algorithm dynamic")
+    # print(algorithms.algorithm_dynamic(70, list_shares))
 
-    # print(f"\n\n{'#' * 25}\n\n")
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,10 @@
 #! /usr/bin/env python3
 # coding:utf-8
 
+"""
+    Class that creates a profit object by combination
+"""
+
 
 class ProfitByCombination:
     """

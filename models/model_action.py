@@ -1,6 +1,10 @@
 #! /usr/bin/env python3
 # coding:utf-8
 
+"""
+    Class that creates an action object
+"""
+
 
 class Action:
     """
