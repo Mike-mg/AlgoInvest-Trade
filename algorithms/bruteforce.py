@@ -8,7 +8,6 @@ Return the combinations of shares with the best profit
 import operator
 from itertools import combinations
 import models
-import data_base
 
 
 class TopProfitByShare:

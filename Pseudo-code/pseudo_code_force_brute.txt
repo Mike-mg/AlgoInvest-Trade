@@ -1,0 +1,78 @@
+DEBUT
+
+    // creation d'une CLASS algorithme force brute
+    CREATION CLASS Nom_Class
+        DEFINIR INITIALISATION de la CLASS (PARAM <- fichier des actions)
+            ATTRIBUT var1 = LIST
+            ATTRIBUT var2 = LIST
+            ATTRIBUT var3 = LIST
+            ATTRIBUT var4 = PARAM
+            INITIALISER FONCTION creation MODELS des actions
+
+        METHODE creation des MODELS
+
+            POUR var DANS var4
+                AJOUTER DANS var1  MODELS ACTION var INDEX 0, var INDEX 1, var INDEX 2
+
+        METHODE calcul de toutes les combinaisons
+            POUR var DANS INTERVALE de 1 a LONGEUR de var1
+                DEFINIR var5 <- MODULE combinaisons de var1 de var
+                AJOUTER a var3 <- la liste de var5
+
+        METHODE creation d'objet profit par combanaison
+            POUR var DANS var3
+                POUR var DANS var
+
+                    var1 <- 0
+                    var2 <- 0
+                    var3 <- liste
+
+                    POUR var dans var
+                        DEFINIR var_profi_to_years <- var_price * var_profit  / 100
+                        AJOUTER a var_profi_to_years <- var_profit
+                        AJOUTER a var_invest <- var_price
+                        AJOUTER a var3 <- var
+
+                    AJOUTER a var3 <- MODELS ProfitByCombination (var3, var_invest, var_profit)
+        
+        METHODE meilleur combinaison
+            var <- liste
+
+            POUR var DANS var3
+                SI var.total_invest EGAL ou PLUS PETIT QUE 500
+                    AJOUTER var a var
+
+            DEFINIR var1 <- TRIER var par INDEX total_profit 
+            DEFINIR var <- var1 de INDEX 0
+
+            AFFICHER var.total_invest
+            AFFICHER var.total_profit
+            AFFICHER var.total_share
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        DEFINIR var1 <- actions selectionnees
+        DEFINIR var2 <- 0
+
+        POUR var DANS PARAM trier SUR INDEX 2 resultat INVERSER
+            SI var INDEX 1 + var2 <= PARAM1
+                AJOUTER var DANS var1
+                INCREMENTER var INDEX 1 a var2
+
+        RENVOI SOMME investi de INDEX 1 de toutes les actions de var1, 
+                SOMME profit de INDEX 1 toutes les actions de var1, 
+                noms INDEX 0 des actions de var1
+
+FIN
